@@ -1,5 +1,5 @@
 # RunInShell
-zig rewrite of [RunInBash](https://github.com/neosmart/RunInBash)\
+fast zig rewrite of [RunInBash](https://github.com/neosmart/RunInBash), with a login shell\
 consider renaming to `$.exe` and placing in path
 
 pipes work, `` ` `` to escape windows variables and special characters
