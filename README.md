@@ -1,6 +1,18 @@
-# rish
+<h1 align="center">
+	rish
+</h1>
 
-[![Zig](https://img.shields.io/badge/Zig-F7A41D?logo=zig&logoColor=fff&style=flat-square)](https://ziglang.org) [![GitHub all releases](https://img.shields.io/github/downloads/Epikest/rish/total?label=Downloads&logo=github&color=%233fb950&style=flat-square)](https://github.com/Epikest/rish/releases) [![GitHub Repo stars](https://img.shields.io/github/stars/Epikest/rish?style=social)](https://github.com/Epikest/rish/stargazers)
+<p align="center">
+	<a href="https://ziglang.org">
+		<img alt="Zig" src="https://img.shields.io/badge/Zig-F7A41D?logo=zig&logoColor=fff&style=flat-square">
+	</a>
+	<a href="https://github.com/Epikest/rish/releases">
+		<img alt="GitHub all releases" src="https://img.shields.io/github/downloads/Epikest/rish/total?label=Downloads&logo=github&color=%233fb950&style=flat-square">
+	</a>
+	<a href="https://github.com/Epikest/rish/stargazers">
+		<img src="https://img.shields.io/github/stars/Epikest/rish?style=social" alt="GitHub Repo stars">
+	</a>
+</p>
 
 rish, formerly known as RunInShell, is a fast zig rewrite of [RunInBash](https://github.com/neosmart/RunInBash), with a login shell\
 consider renaming to `$.exe` and moving to a directory in `$env:PATH`

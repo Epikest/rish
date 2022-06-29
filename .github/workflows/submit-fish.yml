@@ -1,0 +1,38 @@
+name: Submit rish.fish to winget
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  winget-bump:
+    name: winget
+    runs-on: windows-latest
+    if: github.repository == 'Epikest/rish'
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@v2
+      - uses: oprypin/find-latest-tag@v1
+        with:
+          repository: Epikest/rish
+          releases-only: true
+        id: latesttag
+      - name: Set Version
+        id: versionset
+        run: |
+          version="${{ steps.latesttag.outputs.tag }}"
+          echo "::set-output name=version::$version"
+      - name: Submit to winget repository
+        uses: gnpaone/winget-push-test@v1
+        with:
+          version: ${{ steps.versionset.outputs.version }}
+          url: https://github.com/Epikest/rish/releases/download/${{ steps.versionset.outputs.version }}/fish-x86_64.exe
+          urlarm: https://github.com/Epikest/rish/releases/download/${{ steps.versionset.outputs.version }}/fish-aarch64.exe
+          token:  ${{ secrets.rish_PAT }}
+          packageid: rish.fish
+          user: microsoft
+          repo: winget-pkgs
