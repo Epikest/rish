@@ -47,3 +47,4 @@ zig build -Dshell=zsh -Dexe-name=zsh-aarch64 -Drelease-fast -Dtarget=aarch64-win
 zig build -Dshell=fish -Dexe-name=fish-x86_64 -Drelease-fast -Dtarget=x86_64-windows-gnu -Dcpu=baseline -p .\zig-out\release\fish
 zig build -Dshell=fish -Dexe-name=fish-aarch64 -Drelease-fast -Dtarget=aarch64-windows-gnu -Dcpu=baseline -p .\zig-out\release\fish
 ```
+
