@@ -13,7 +13,7 @@ pub fn build(b: *std.build.Builder) void {
 
     // TODO: Automatic naming based on target
     const exe_name = b.option([]const u8, "exe-name", "Override default executable name") orelse "$";
-    const exe = b.addExecutable(exe_name, "src/$.zig");
+    const exe = b.addExecutable(exe_name, "src/rish.zig");
     exe.setTarget(target);
     exe.setBuildMode(mode);
     exe.install();
