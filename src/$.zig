@@ -1,6 +1,5 @@
 const std = @import("std");
 const shell = @import("build_options").shell;
-const string = []const u8;
 
 pub fn main() !void {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
@@ -9,8 +8,8 @@ pub fn main() !void {
 
     var iterator = try std.process.argsWithAllocator(allocator);
     defer iterator.deinit();
-
     _ = iterator.skip(); // Skip the program name
+
     var command: []const u8 = "";
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
@@ -29,11 +28,8 @@ pub fn main() !void {
         std.log.err("Failed to allocate the string", .{});
         return;
     };
-    var process = std.ChildProcess.init(&.{ "wsl", "-e", shell, "-li", "-c", command }, allocator) catch {
-        std.log.err("Failed to start child process", .{});
-        return;
-    };
-    defer process.deinit();
+
+    var process = std.ChildProcess.init(&.{ "wsl", "-e", shell, "-li", "-c", command }, allocator);
     _ = process.spawnAndWait() catch {
         std.log.err("Failed to spawn the child process", .{});
         return;
