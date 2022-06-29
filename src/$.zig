@@ -1,7 +1,6 @@
 const std = @import("std");
+const shell = @import("build_options").shell;
 const string = []const u8;
-
-const shell = "bash"; // zsh, fish, etc.
 
 pub fn main() !void {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};

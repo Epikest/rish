@@ -11,10 +11,18 @@ pub fn build(b: *std.build.Builder) void {
     // between Debug, ReleaseSafe, ReleaseFast, and ReleaseSmall.
     const mode = b.standardReleaseOptions();
 
-    const exe = b.addExecutable("$", "src/$.zig");
+    // TODO: Automatic naming based on target
+    const exe_name = b.option([]const u8, "exe-name", "Override default executable name") orelse "$";
+    const exe = b.addExecutable(exe_name, "src/$.zig");
     exe.setTarget(target);
     exe.setBuildMode(mode);
     exe.install();
+
+    const exe_options = b.addOptions();
+    exe.addOptions("build_options", exe_options);
+
+    const shell = b.option([]const u8, "shell", "Shell to use, must support interactive login") orelse "bash";
+    exe_options.addOption([]const u8, "shell", shell);
 
     const run_cmd = exe.run();
     run_cmd.step.dependOn(b.getInstallStep());
