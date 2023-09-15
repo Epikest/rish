@@ -3,10 +3,9 @@ const shell = @import("build_options").shell;
 
 pub fn main() !void {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
-    defer _ = gpa.deinit();
-    var allocator = gpa.allocator();
-
+    const allocator = gpa.allocator();
     var iterator = try std.process.argsWithAllocator(allocator);
+    defer _ = gpa.deinit();
     defer iterator.deinit();
     _ = iterator.skip(); // Skip the program name
 
@@ -31,7 +30,9 @@ pub fn main() !void {
 
     var process = std.ChildProcess.init(&.{ "wsl", "-e", shell, "-li", "-c", command }, allocator);
     _ = process.spawnAndWait() catch {
-        std.log.err("Failed to spawn the child process", .{});
-        return;
+        std.log.err(
+            \\Failed to spawn the child process
+            \\Did you forget to install WSL?
+        , .{});
     };
 }
