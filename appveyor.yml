@@ -1,5 +1,5 @@
 init:
-- ps: iex (new-object net.webclient).downloadstring("https://get.scoop.sh")
+- ps: iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
 
 install:
 - ps: scoop install zig
