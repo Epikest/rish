@@ -2,9 +2,14 @@ init:
 - ps: iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
 
 install:
-- ps: scoop install zig
+- ps: scoop install zig@0.11.0
 
 build: off
 
 test_script:
-- zig version
+- zig build -Dshell=bash -Dexe-name=bash-x86_64 -Doptimize=ReleaseFast -Dtarget=x86_64-windows-gnu -Dcpu=baseline -p .\zig-out\release\bash
+- zig build -Dshell=bash -Dexe-name=bash-aarch64 -Doptimize=ReleaseFast -Dtarget=aarch64-windows-gnu -Dcpu=baseline -p .\zig-out\release\bash
+- zig build -Dshell=zsh -Dexe-name=zsh-x86_64 -Doptimize=ReleaseFast -Dtarget=x86_64-windows-gnu -Dcpu=baseline -p .\zig-out\release\zsh
+- zig build -Dshell=zsh -Dexe-name=zsh-aarch64 -Doptimize=ReleaseFast -Dtarget=aarch64-windows-gnu -Dcpu=baseline -p .\zig-out\release\zsh
+- zig build -Dshell=fish -Dexe-name=fish-x86_64 -Doptimize=ReleaseFast -Dtarget=x86_64-windows-gnu -Dcpu=baseline -p .\zig-out\release\fish
+- zig build -Dshell=fish -Dexe-name=fish-aarch64 -Doptimize=ReleaseFast -Dtarget=aarch64-windows-gnu -Dcpu=baseline -p .\zig-out\release\fish
