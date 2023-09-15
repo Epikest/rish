@@ -31,19 +31,19 @@ issues welcome
 it is preferred to build rish for yourself so that you get all the speed optimizations for your computer
 
 ```ps1
-zig build -Dshell=zsh -Drelease-fast -p .\zig-out\native
+zig build -Dshell=zsh -Doptimize=ReleaseFast -p .\zig-out\native
 cp .\zig-out\native\bin\$.exe C:\Windows\System32 # or any other directory in `$env:PATH`
 ```
 
 ### release
 
 ```ps1
-zig build -Dshell=bash -Dexe-name=bash-x86_64 -Drelease-fast -Dtarget=x86_64-windows-gnu -Dcpu=baseline -p .\zig-out\release\bash
-zig build -Dshell=bash -Dexe-name=bash-aarch64 -Drelease-fast -Dtarget=aarch64-windows-gnu -Dcpu=baseline -p .\zig-out\release\bash
+zig build -Dshell=bash -Dexe-name=bash-x86_64 -Doptimize=ReleaseFast -Dtarget=x86_64-windows-gnu -Dcpu=baseline -p .\zig-out\release\bash
+zig build -Dshell=bash -Dexe-name=bash-aarch64 -Doptimize=ReleaseFast -Dtarget=aarch64-windows-gnu -Dcpu=baseline -p .\zig-out\release\bash
 
-zig build -Dshell=zsh -Dexe-name=zsh-x86_64 -Drelease-fast -Dtarget=x86_64-windows-gnu -Dcpu=baseline -p .\zig-out\release\zsh
-zig build -Dshell=zsh -Dexe-name=zsh-aarch64 -Drelease-fast -Dtarget=aarch64-windows-gnu -Dcpu=baseline -p .\zig-out\release\zsh
+zig build -Dshell=zsh -Dexe-name=zsh-x86_64 -Doptimize=ReleaseFast -Dtarget=x86_64-windows-gnu -Dcpu=baseline -p .\zig-out\release\zsh
+zig build -Dshell=zsh -Dexe-name=zsh-aarch64 -Doptimize=ReleaseFast -Dtarget=aarch64-windows-gnu -Dcpu=baseline -p .\zig-out\release\zsh
 
-zig build -Dshell=fish -Dexe-name=fish-x86_64 -Drelease-fast -Dtarget=x86_64-windows-gnu -Dcpu=baseline -p .\zig-out\release\fish
-zig build -Dshell=fish -Dexe-name=fish-aarch64 -Drelease-fast -Dtarget=aarch64-windows-gnu -Dcpu=baseline -p .\zig-out\release\fish
+zig build -Dshell=fish -Dexe-name=fish-x86_64 -Doptimize=ReleaseFast -Dtarget=x86_64-windows-gnu -Dcpu=baseline -p .\zig-out\release\fish
+zig build -Dshell=fish -Dexe-name=fish-aarch64 -Doptimize=ReleaseFast -Dtarget=aarch64-windows-gnu -Dcpu=baseline -p .\zig-out\release\fish
 ```
