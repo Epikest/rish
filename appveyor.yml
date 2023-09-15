@@ -1,0 +1,10 @@
+init:
+- ps: iex (new-object net.webclient).downloadstring("https://get.scoop.sh")
+
+install:
+- ps: scoop install zig
+
+build: off
+
+test_script:
+- zig version
